@@ -10,9 +10,7 @@ import com.example.trackmysleep.R
 
 class SleepTrackerFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = SleepTrackerFragment()
-    }
+
 
     private lateinit var viewModel: SleepTrackerViewModel
 
@@ -20,6 +18,8 @@ class SleepTrackerFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
         return inflater.inflate(R.layout.sleep_tracker_fragment, container, false)
     }
 
