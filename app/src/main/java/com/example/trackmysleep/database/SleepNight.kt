@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
- class SleepNight(
+ data class SleepNight(
  @PrimaryKey(autoGenerate = true)
  val nightId:Long=0L,
 
