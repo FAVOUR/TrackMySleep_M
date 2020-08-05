@@ -13,8 +13,8 @@ import androidx.room.PrimaryKey
  val startTimeMill:Long = System.currentTimeMillis(),
 
  @ColumnInfo(name = "end_time_mill")
- val endTimeMill:Long = startTimeMill,
+ var endTimeMill:Long = startTimeMill,
 
  @ColumnInfo(name = "quality_rating")
- val sleepQuality:Int =-1
+ var sleepQuality:Int =-1
 )

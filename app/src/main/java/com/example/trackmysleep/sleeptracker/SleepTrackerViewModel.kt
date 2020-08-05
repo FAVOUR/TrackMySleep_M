@@ -67,6 +67,7 @@ init {
     fun onStopTracking(){
         uiScope.launch {
             val oldNight =tonight.value ?:return@launch
+            oldNight.endTimeMill = System.currentTimeMillis()
             update(oldNight)
         }
     }
