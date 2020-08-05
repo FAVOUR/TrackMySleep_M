@@ -9,6 +9,8 @@ buildscript {
         coroutine_version = '1.0.0'
         gradleVersion = '3.3.0'
         navigationVersion = '1.0.0-alpha08'
+        androidXTestExtKotlinRunnerVersion = '1.1.1'
+        androidXTestCoreVersion = '1.2.0'
         dataBindingCompilerVersion = gradleVersion // Always need to be the same.
     }
 
