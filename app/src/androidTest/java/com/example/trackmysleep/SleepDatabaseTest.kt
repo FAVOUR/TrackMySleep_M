@@ -23,14 +23,15 @@ class SleepDatabaseTest  {
         sleepDatabase= Room.databaseBuilder(context,SleepDatabase::class.java,"sleepDp")
                             .allowMainThreadQueries()
                             .build()
-
-
     }
+
 
     @After
     fun destroyDatabase(){
         sleepDatabase.close()
     }
+
+
 
 
 

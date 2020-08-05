@@ -1,10 +1,12 @@
 package com.example.trackmysleep.database
 
 import androidx.lifecycle.LiveData
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 
+@Dao
 interface SleepDataBaseDoa {
  @Insert
  fun insert (night:SleepNight)

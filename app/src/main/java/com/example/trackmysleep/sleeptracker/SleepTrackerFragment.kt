@@ -6,7 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import com.example.trackmysleep.R
+import com.example.trackmysleep.database.SleepDatabase
+import com.example.trackmysleep.databinding.SleepTrackerFragmentBinding
 
 class SleepTrackerFragment : Fragment() {
 
@@ -20,13 +23,29 @@ class SleepTrackerFragment : Fragment() {
     ): View? {
 
 
-        return inflater.inflate(R.layout.sleep_tracker_fragment, container, false)
+        val binding:SleepTrackerFragmentBinding = DataBindingUtil.inflate(inflater,R.layout.sleep_tracker_fragment, container, false)
+
+        val application = requireNotNull(this.activity).application
+
+        val dataSource = SleepDatabase.getInstance(application).sleepDataBaseDoa
+
+        val viewModelFactory = SleepTrackerViewModelFactory(dataSource, application)
+
+        val sleepTrackerViewModel =
+            ViewModelProviders.of(
+                this, viewModelFactory).get(SleepTrackerViewModel::class.java)
+
+        binding.setLifecycleOwner(this)
+
+        binding.sleepTrackerViewModel = sleepTrackerViewModel
+
+        return binding.root
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(SleepTrackerViewModel::class.java)
-        // TODO: Use the ViewModel
+
     }
 
 }
