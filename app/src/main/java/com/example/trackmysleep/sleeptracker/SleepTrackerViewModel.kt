@@ -11,7 +11,10 @@ class SleepTrackerViewModel(
     private val database:SleepDataBaseDoa,
     application: Application) : AndroidViewModel(application) {
 
+  var _navigateToSleepQuality =MutableLiveData<SleepNight>()
 
+    val navigateToSleepQuality : LiveData<SleepNight>
+      get() = _navigateToSleepQuality
 
 private var viewModelJob =Job()
 
@@ -36,6 +39,10 @@ init {
         viewModelScope.launch {
             tonight.value =getTonightFromDataBase()
         }
+    }
+
+    fun doneNavigating (){
+        _navigateToSleepQuality.value =null
     }
 
     private suspend fun getTonightFromDataBase(): SleepNight? {
@@ -69,6 +76,8 @@ init {
             val oldNight =tonight.value ?:return@launch
             oldNight.endTimeMill = System.currentTimeMillis()
             update(oldNight)
+            _navigateToSleepQuality.value=oldNight
+
         }
     }
 
