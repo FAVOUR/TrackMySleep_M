@@ -44,7 +44,7 @@ class SleepQualityFragment : Fragment() {
 
         })
 
-
+       dataBinding.sleepViewModelQuality =sleepQualityViewModel
         return  dataBinding.root
     }
 

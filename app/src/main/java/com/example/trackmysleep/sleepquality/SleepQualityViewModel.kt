@@ -1,5 +1,7 @@
 package com.example.trackmysleep.sleepquality
 
+import android.icu.text.LocaleDisplayNames
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,13 +26,14 @@ class SleepQualityViewModel(val sleepQuality:Long=0L,val sleepDataBaseDoa: Sleep
 
 
       fun selectViewQuality(sleep:Int){
-
+          Log.d("TAG", "selectViewQuality: Triggered with $sleep")
           //Main safe  call can be made
           uiScope.launch {
-              var sleepNight =sleepDataBaseDoa.get(sleepQuality) ?: return@launch
 
               //Serves as a suspending function
                   withContext(Dispatchers.IO) {
+                      var sleepNight =sleepDataBaseDoa.get(sleepQuality) ?: return@withContext
+
                       sleepNight.sleepQuality = sleep
                       sleepDataBaseDoa.update(sleepNight)
                   }
