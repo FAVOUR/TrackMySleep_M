@@ -11,7 +11,7 @@ class SleepTrackerViewModel(
     private val database:SleepDataBaseDoa,
     application: Application) : AndroidViewModel(application) {
 
-  var _navigateToSleepQuality =MutableLiveData<SleepNight>()
+     private var _navigateToSleepQuality =MutableLiveData<SleepNight>()
 
     val navigateToSleepQuality : LiveData<SleepNight>
       get() = _navigateToSleepQuality
