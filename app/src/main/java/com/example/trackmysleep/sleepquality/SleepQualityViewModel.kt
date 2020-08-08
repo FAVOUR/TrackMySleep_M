@@ -18,6 +18,8 @@ class SleepQualityViewModel(val sleepQuality:Long=0L,val sleepDataBaseDoa: Sleep
        get() =_navigateToSleepTracker
 
 
+
+
       val _navigateToSleepTracker = MutableLiveData<Boolean>()
 
           fun doneNavigating(){
