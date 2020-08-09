@@ -1,6 +1,5 @@
 package com.example.trackmysleep.sleeptracker.adapter
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,16 +32,16 @@ class SleepNightAdapter : RecyclerView.Adapter<SleepNightAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
 
-        bind(holder, item)
+        holder.bind(item)
     }
 
-    private fun bind(holder: ViewHolder, item: SleepNight) {
-        val res = holder.itemView.context.resources
-        holder.sleepLength.text =
+    private fun ViewHolder.bind(item: SleepNight) {
+        val res = itemView.context.resources
+        sleepLength.text =
             convertDurationToFormatted(item.startTimeMill, item.endTimeMill, res)
-        holder.quality.text = convertNumericQualityToString(item.sleepQuality, res)
+        quality.text = convertNumericQualityToString(item.sleepQuality, res)
 
-        holder.qualityImage.setImageResource(
+        qualityImage.setImageResource(
             when (item.sleepQuality) {
                 0 -> R.drawable.ic_sleep_0
                 1 -> R.drawable.ic_sleep_1
