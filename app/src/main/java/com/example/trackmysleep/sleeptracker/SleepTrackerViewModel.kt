@@ -16,17 +16,23 @@ class SleepTrackerViewModel(
     val navigateToSleepQuality : LiveData<SleepNight>
       get() = _navigateToSleepQuality
 
-private var viewModelJob =Job()
+
+    var _showSnackBarEvent = MutableLiveData<Boolean>()
+
+    val showSnackBarEvent :LiveData<Boolean>
+     get() = _showSnackBarEvent
+
+    private var viewModelJob =Job()
 
     private  val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-
+    //Find out why this was not called using couroutine
     private val nights = database.getAllNight()
 
     val nightString = Transformations.map(nights){ nights ->
         formatNights(nights,application.resources)
-
     }
+
 
     private var tonight = MutableLiveData<SleepNight?>()
 
@@ -108,7 +114,13 @@ init {
         }
     }
 
+    fun  doneDisplayingSnackBar(){
+        _showSnackBarEvent.value=false
+
+    }
+
     suspend fun clear() {
+        _showSnackBarEvent.value=true
         withContext(Dispatchers.IO) {
             database.clear()
         }

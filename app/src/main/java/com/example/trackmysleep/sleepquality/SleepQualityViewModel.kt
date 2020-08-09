@@ -44,6 +44,8 @@ class SleepQualityViewModel(val sleepQuality:Long=0L,val sleepDataBaseDoa: Sleep
           }
       }
 
+
+
     override fun onCleared() {
         super.onCleared()
         job.cancel()
