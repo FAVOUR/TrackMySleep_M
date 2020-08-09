@@ -27,7 +27,7 @@ class SleepTrackerViewModel(
     private  val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     //Find out why this was not called using couroutine
-    private val nights = database.getAllNight()
+     val nights = database.getAllNight()
 
     val nightString = Transformations.map(nights){ nights ->
         formatNights(nights,application.resources)

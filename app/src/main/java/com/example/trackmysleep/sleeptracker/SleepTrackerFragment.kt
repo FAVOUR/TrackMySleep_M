@@ -13,13 +13,13 @@ import androidx.navigation.fragment.findNavController
 import com.example.trackmysleep.R
 import com.example.trackmysleep.database.SleepDatabase
 import com.example.trackmysleep.databinding.SleepTrackerFragmentBinding
+import com.example.trackmysleep.sleeptracker.adapter.SleepNightAdapter
 import com.google.android.material.snackbar.Snackbar
 
 class SleepTrackerFragment : Fragment() {
 
 
 
-    private lateinit var viewModel: SleepTrackerViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,6 +52,19 @@ class SleepTrackerFragment : Fragment() {
                 sleepTrackerViewModel.doneNavigating()
 
             }
+        })
+
+        val adapter = SleepNightAdapter()
+
+
+        binding.listItem.adapter = adapter
+
+
+
+        sleepTrackerViewModel.nights.observe(this, Observer{
+             it?.let {
+                 adapter.data=it
+             }
         })
 
         sleepTrackerViewModel.showSnackBarEvent.observe(this, Observer {
