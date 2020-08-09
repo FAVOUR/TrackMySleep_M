@@ -1,5 +1,6 @@
 package com.example.trackmysleep.sleeptracker.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -17,7 +18,7 @@ class SleepNightAdapter : RecyclerView.Adapter<TextItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TextItemViewHolder {
         val inflater = LayoutInflater.from(parent.context)
 
-        val view = inflater.inflate(R.layout.text_item_view,parent,false)as TextView
+        val view = inflater.inflate(R.layout.list_item_sleep_night,parent,false)as TextView
 
           return (TextItemViewHolder(view))
     }
@@ -27,8 +28,15 @@ class SleepNightAdapter : RecyclerView.Adapter<TextItemViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: TextItemViewHolder, position: Int) {
+        val item = data[position]
 
-        holder.textView.text = data[position].sleepQuality.toString()
+        holder.textView.text =item.sleepQuality.toString()
+        if (item.sleepQuality <= 1) {
+            holder.textView.setTextColor(Color.RED) // red
+        } else {
+            // reset
+            holder.textView.setTextColor(Color.BLACK) // black
+        }
     }
 
 }
