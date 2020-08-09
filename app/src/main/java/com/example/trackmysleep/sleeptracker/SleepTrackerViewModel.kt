@@ -17,7 +17,7 @@ class SleepTrackerViewModel(
       get() = _navigateToSleepQuality
 
 
-    var _showSnackBarEvent = MutableLiveData<Boolean>()
+    private var _showSnackBarEvent = MutableLiveData<Boolean>()
 
     val showSnackBarEvent :LiveData<Boolean>
      get() = _showSnackBarEvent
