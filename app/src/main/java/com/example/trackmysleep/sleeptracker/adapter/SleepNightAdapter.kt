@@ -31,12 +31,12 @@ class SleepNightAdapter : RecyclerView.Adapter<SleepNightAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        bind(position, holder)
-    }
-
-    private fun bind(position: Int, holder: ViewHolder) {
         val item = data[position]
 
+        bind(holder, item)
+    }
+
+    private fun bind(holder: ViewHolder, item: SleepNight) {
         val res = holder.itemView.context.resources
         holder.sleepLength.text =
             convertDurationToFormatted(item.startTimeMill, item.endTimeMill, res)
