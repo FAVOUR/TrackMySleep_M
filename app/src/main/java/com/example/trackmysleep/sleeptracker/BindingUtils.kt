@@ -8,7 +8,7 @@ import com.example.trackmysleep.convertDurationToFormatted
 import com.example.trackmysleep.convertNumericQualityToString
 import com.example.trackmysleep.database.SleepNight
 
-class BindingUtils {
+
 
     @BindingAdapter("setSleepDurationFormatted")
     fun TextView.setSleepDurationFormatted(item: SleepNight) {
@@ -45,4 +45,3 @@ class BindingUtils {
             }
         )
     }
-}
