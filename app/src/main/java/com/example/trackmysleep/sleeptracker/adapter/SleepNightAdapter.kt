@@ -12,20 +12,15 @@ import com.example.trackmysleep.R
 import com.example.trackmysleep.convertDurationToFormatted
 import com.example.trackmysleep.convertNumericQualityToString
 import com.example.trackmysleep.database.SleepNight
+import com.example.trackmysleep.databinding.ListItemSleepNightBinding
 
 class SleepNightAdapter : ListAdapter<SleepNight,SleepNightAdapter.ViewHolder>(SleepNightDiffUtilCallback()) {
-//    var data = listOf<SleepNight>()
-//     set(value) {
-//         field =value
-//         notifyDataSetChanged()
-//     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
     }
 
-//    override fun getItemCount(): Int {
-//       return  data.size
-//    }
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
@@ -44,7 +39,7 @@ class SleepNightAdapter : ListAdapter<SleepNight,SleepNightAdapter.ViewHolder>(S
           }
 
       }
-     class  ViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView){
+     class  ViewHolder private constructor(binding: ListItemSleepNightBinding) : RecyclerView.ViewHolder(binding.root){
         val sleepLength: TextView = itemView.findViewById(R.id.sleep_length)
         val quality: TextView = itemView.findViewById(R.id.quality_string)
         val qualityImage: ImageView = itemView.findViewById(R.id.quality_image)
@@ -73,9 +68,9 @@ class SleepNightAdapter : ListAdapter<SleepNight,SleepNightAdapter.ViewHolder>(S
             fun from(parent: ViewGroup): ViewHolder {
                 val inflater = LayoutInflater.from(parent.context)
 
-                val view = inflater.inflate(R.layout.list_item_sleep_night, parent, false)
+                val binding = ListItemSleepNightBinding.inflate(inflater, parent, false)
 
-                return (ViewHolder(view))
+                return ViewHolder(binding)
             }
         }
     }
