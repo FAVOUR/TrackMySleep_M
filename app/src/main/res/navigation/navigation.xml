@@ -13,7 +13,7 @@
 <!--                android:id="@+id/action_sleepTrackerFragment_toSleepQualityFragment"-->
 <!--                app:destination="@+id/sleep_quality_fragment"-->
 <!--                app:enterAnim="@anim/fragment_fade_enter"-->
-<!--                app:popEnterAnim="@anim/slide_in"/>-->
+<!--                app:popEnterAnim="@anim/slide_in_right"/>-->
 
         <action
             android:id="@+id/action_sleep_tracker_fragment_to_sleepDetailFragment"
