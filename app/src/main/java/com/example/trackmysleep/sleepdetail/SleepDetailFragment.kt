@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.trackmysleepquality.sleepdetail
+package com.example.trackmysleep.sleepdetail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -25,9 +25,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-import com.example.android.trackmysleepquality.R
-import com.example.android.trackmysleepquality.database.SleepDatabase
-import com.example.android.trackmysleepquality.databinding.FragmentSleepDetailBinding
+import com.example.android.trackmysleepquality.sleepdetail.SleepDetailFragmentArgs
+import com.example.android.trackmysleepquality.sleepdetail.SleepDetailFragmentDirections
 import com.example.trackmysleep.R
 import com.example.trackmysleep.database.SleepDatabase
 import com.example.trackmysleep.databinding.FragmentSleepDetailBinding
@@ -52,7 +51,7 @@ class SleepDetailFragment : Fragment() {
                 inflater, R.layout.fragment_sleep_detail, container, false)
 
         val application = requireNotNull(this.activity).application
-        val arguments = SleepDetailFragmentArgs.fromBundle(arguments)
+        val arguments = SleepDetailFragmentArgs.fromBundle(requireArguments())
 
         // Create an instance of the ViewModel Factory.
         val dataSource = SleepDatabase.getInstance(application).sleepDataBaseDoa
@@ -73,7 +72,8 @@ class SleepDetailFragment : Fragment() {
         sleepDetailViewModel.navigateToSleepTracker.observe(this, Observer {
             if (it == true) { // Observed state is true.
                 this.findNavController().navigate(
-                        SleepDetailFragmentDirections.actionSleepDetailFragmentToSleepTrackerFragment())
+                    SleepDetailFragmentDirections.actionSleepDetailFragmentToSleepTrackerFragment()
+                )
                 // Reset state to make sure we only navigate once, even if the device
                 // has a configuration change.
                 sleepDetailViewModel.doneNavigating()

@@ -32,6 +32,10 @@
     <string name="four_pretty_good">Pretty good</string>
     <string name="five_excellent">Excellent!</string>
 
+<!--    <string name="close">Close</string>-->
+
+
+
     <!-- Toast to play after Clear button has been pressed -->
     <string name="cleared_message">All your data is gone forever.</string>
 
