@@ -39,22 +39,23 @@
             android:layout_marginTop="56dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+           app:sleepImage="@{sleepDetailViewModel.night}"
+           app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-<!--    app:sleepImage="@{sleepDetailViewModel.night}"-->
 
-        <TextView
+
+    <TextView
             android:id="@+id/quality_string"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="100dp"
             android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
+        app:sleepQualityString="@{sleepDetailViewModel.night}"
+        app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/quality_image"
             />
-<!--    app:sleepQualityString="@{sleepDetailViewModel.night}"-->
         <TextView
             android:id="@+id/sleep_length"
             android:layout_width="wrap_content"
@@ -67,17 +68,18 @@
             app:layout_constraintTop_toBottomOf="@+id/quality_string"
              />
 <!--    app:sleepDurationFormatted="@{sleepDetailViewModel.night}"-->
-        <Button
+
+    <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="32dp"
             android:text="@string/close"
+            android:onClick="@{() -> sleepDetailViewModel.onClose()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-<!--    android:onClick="@{() -> sleepDetailViewModel.onClose()}"-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
