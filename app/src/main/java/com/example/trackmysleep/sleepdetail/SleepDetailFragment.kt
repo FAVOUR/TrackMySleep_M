@@ -29,6 +29,8 @@ import androidx.navigation.fragment.findNavController
 //import com.example.android.trackmysleepquality.sleepdetail.SleepDetailFragmentDirections
 import com.example.trackmysleep.R
 import com.example.trackmysleep.database.SleepDatabase
+import com.example.trackmysleep.databinding.FragmentSleepDetailBinding
+
 //import com.example.trackmysleep.databinding.FragmentSleepDetailBinding
 
 
@@ -47,8 +49,8 @@ class SleepDetailFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
 
         // Get a reference to the binding object and inflate the fragment views.
-//        val binding: FragmentSleepDetailBinding = DataBindingUtil.inflate(
-//                inflater, R.layout.fragment_sleep_detail, container, false)
+        val binding: FragmentSleepDetailBinding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_sleep_detail, container, false)
 
         val application = requireNotNull(this.activity).application
 //        val arguments = SleepDetailFragmentArgs.fromBundle(requireArguments())
@@ -59,7 +61,7 @@ class SleepDetailFragment : Fragment() {
         val viewModelFactory = SleepDetailViewModelFactory(1L, dataSource)
 
         // Get a reference to the ViewModel associated with this fragment.
-    /*    val sleepDetailViewModel =
+        val sleepDetailViewModel =
                 ViewModelProviders.of(
                         this, viewModelFactory).get(SleepDetailViewModel::class.java)
 
@@ -70,7 +72,7 @@ class SleepDetailFragment : Fragment() {
         binding.setLifecycleOwner(this)
 
         // Add an Observer to the state variable for Navigating when a Quality icon is tapped.
-        sleepDetailViewModel.navigateToSleepTracker.observe(this, Observer {
+      /*  sleepDetailViewModel.navigateToSleepTracker.observe(this, Observer {
             if (it == true) { // Observed state is true.
                 this.findNavController().navigate(
                     SleepDetailFragmentDirections.actionSleepDetailFragmentToSleepTrackerFragment()
@@ -81,9 +83,9 @@ class SleepDetailFragment : Fragment() {
             }
         })*/
 
-//        return binding.root
+        return binding.root
 
-          return  inflater.inflate( R.layout.fragment_sleep_detail, container, false)
+//          return  inflater.inflate( R.layout.fragment_sleep_detail, container, false)
     }
 
 
