@@ -47,15 +47,15 @@ class SleepTrackerFragment : Fragment() {
         val manager = GridLayoutManager(activity, 3)
         binding.sleepList.layoutManager = manager
 
-        sleepTrackerViewModel.navigateToSleepQuality.observe(this, Observer { night ->
-            night?.let {
-                this.findNavController().navigate(
-                    SleepTrackerFragmentDirections.actionSleepTrackerFragmentToSleepQualityFragment(it.nightId)
-                )
-                sleepTrackerViewModel.doneNavigating()
-
-            }
-        })
+//        sleepTrackerViewModel.navigateToSleepQuality.observe(this, Observer { night ->
+//            night?.let {
+//                this.findNavController().navigate(
+//                    SleepTrackerFragmentDirections.actionSleepTrackerFragmentToSleepQualityFragment(it.nightId)
+//                )
+//                sleepTrackerViewModel.doneNavigating()
+//
+//            }
+//        })
 
         val adapter = SleepNightAdapter()
 

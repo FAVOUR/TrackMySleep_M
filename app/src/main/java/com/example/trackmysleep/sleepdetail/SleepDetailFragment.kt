@@ -25,11 +25,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-import com.example.android.trackmysleepquality.sleepdetail.SleepDetailFragmentArgs
-import com.example.android.trackmysleepquality.sleepdetail.SleepDetailFragmentDirections
+//import com.example.android.trackmysleepquality.sleepdetail.SleepDetailFragmentArgs
+//import com.example.android.trackmysleepquality.sleepdetail.SleepDetailFragmentDirections
 import com.example.trackmysleep.R
 import com.example.trackmysleep.database.SleepDatabase
-import com.example.trackmysleep.databinding.FragmentSleepDetailBinding
+//import com.example.trackmysleep.databinding.FragmentSleepDetailBinding
 
 
 /**
@@ -47,18 +47,19 @@ class SleepDetailFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
 
         // Get a reference to the binding object and inflate the fragment views.
-        val binding: FragmentSleepDetailBinding = DataBindingUtil.inflate(
-                inflater, R.layout.fragment_sleep_detail, container, false)
+//        val binding: FragmentSleepDetailBinding = DataBindingUtil.inflate(
+//                inflater, R.layout.fragment_sleep_detail, container, false)
 
         val application = requireNotNull(this.activity).application
-        val arguments = SleepDetailFragmentArgs.fromBundle(requireArguments())
+//        val arguments = SleepDetailFragmentArgs.fromBundle(requireArguments())
 
         // Create an instance of the ViewModel Factory.
         val dataSource = SleepDatabase.getInstance(application).sleepDataBaseDoa
-        val viewModelFactory = SleepDetailViewModelFactory(arguments.sleepNightKey, dataSource)
+//        val viewModelFactory = SleepDetailViewModelFactory(arguments.sleepNightKey, dataSource)
+        val viewModelFactory = SleepDetailViewModelFactory(1L, dataSource)
 
         // Get a reference to the ViewModel associated with this fragment.
-        val sleepDetailViewModel =
+    /*    val sleepDetailViewModel =
                 ViewModelProviders.of(
                         this, viewModelFactory).get(SleepDetailViewModel::class.java)
 
@@ -78,9 +79,11 @@ class SleepDetailFragment : Fragment() {
                 // has a configuration change.
                 sleepDetailViewModel.doneNavigating()
             }
-        })
+        })*/
 
-        return binding.root
+//        return binding.root
+
+          return  inflater.inflate( R.layout.fragment_sleep_detail, container, false)
     }
 
 
