@@ -37,7 +37,7 @@ class SleepNightAdapter(val sleepNightListener: SleepNightListener) : ListAdapte
 
          fun bind(
              item: SleepNight, sleepNightListener: SleepNightListener) {
-            binding.sleep =item
+             binding.sleep =item
              binding.executePendingBindings()
              binding.sleepListener =sleepNightListener
 
