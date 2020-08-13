@@ -59,6 +59,8 @@ class SleepNightAdapter : ListAdapter<SleepNight,SleepNightAdapter.ViewHolder>(S
         }
     }
 
+    class SleepNightListener(){
 
+    }
 
 }

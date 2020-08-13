@@ -10,7 +10,7 @@ import com.example.trackmysleep.database.SleepNight
 
 
 
-    @BindingAdapter("setSleepDurationFormatted")
+    @BindingAdapter("sleepDurationFormatted")
     fun TextView.setSleepDurationFormatted(item: SleepNight) {
         text = convertDurationToFormatted(
             item.startTimeMill,
