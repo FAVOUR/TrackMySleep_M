@@ -22,6 +22,10 @@ class SleepTrackerViewModel(
     val showSnackBarEvent :LiveData<Boolean>
      get() = _showSnackBarEvent
 
+    private val _navigateToSleepDetail = MutableLiveData<Long>()
+    val navigateToSleepDetail
+        get() = _navigateToSleepDetail
+
     private var viewModelJob =Job()
 
     private  val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -105,6 +109,15 @@ init {
             database.update(sleepNight)
         }
     }
+
+    fun onNightSleepClicked(itemClicked:Long){
+        _navigateToSleepDetail.value = itemClicked
+    }
+
+    fun onNightSleepDetailNavigated(){
+        _navigateToSleepDetail.value=null
+    }
+
 
 
     fun onClear() {

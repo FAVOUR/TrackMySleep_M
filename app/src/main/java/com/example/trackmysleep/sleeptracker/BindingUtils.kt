@@ -11,29 +11,32 @@ import com.example.trackmysleep.database.SleepNight
 
 
     @BindingAdapter("sleepDurationFormatted")
-    fun TextView.setSleepDurationFormatted(item: SleepNight) {
-        text = convertDurationToFormatted(
-            item.startTimeMill,
-            item.endTimeMill,
-            context.resources
-        )
+    fun TextView.setSleepDurationFormatted(item: SleepNight?) {
+        text =item?.let {
+            convertDurationToFormatted(
+                item.startTimeMill,
+                item.endTimeMill,
+                context.resources
+            )
+        }
 
     }
 
 
     @BindingAdapter("sleepQualityString")
-    fun TextView.setSleepQualityString(item: SleepNight) {
-        text = convertNumericQualityToString(
+    fun TextView.setSleepQualityString(item: SleepNight?) {
+        text =  item?.let{convertNumericQualityToString(
             item.sleepQuality,
             context.resources
         )
+    }
     }
 
 
 
     @BindingAdapter("sleepImage")
-    fun ImageView.setImage(item:SleepNight) {
-        setImageResource(
+    fun ImageView.setImage(item:SleepNight?) {
+        item?.let { setImageResource(
             when (item.sleepQuality) {
                 0 -> R.drawable.ic_sleep_0
                 1 -> R.drawable.ic_sleep_1
@@ -44,4 +47,5 @@ import com.example.trackmysleep.database.SleepNight
                 else -> R.drawable.ic_sleep_active
             }
         )
+        }
     }
