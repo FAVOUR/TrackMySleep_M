@@ -20,9 +20,6 @@ import com.google.android.material.snackbar.Snackbar
 
 class SleepTrackerFragment : Fragment() {
 
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
