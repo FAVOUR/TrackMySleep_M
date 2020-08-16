@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.trackmysleep.R
 import com.example.trackmysleep.database.SleepNight
 import com.example.trackmysleep.databinding.ListItemSleepNightBinding
+import kotlinx.coroutines.*
 import java.lang.ClassCastException
+import kotlin.coroutines.coroutineContext
 
 class SleepNightAdapter(val sleepNightListener: SleepNightListener) : ListAdapter<DemoItem,RecyclerView.ViewHolder>(SleepNightDiffUtilCallback()) {
     private val ITEM_VIEW_TYPE_HEADER = 0
@@ -23,16 +25,19 @@ class SleepNightAdapter(val sleepNightListener: SleepNightListener) : ListAdapte
             else -> throw ClassCastException("Unable to cast class to ${viewType}")
         }
     }
-
+    val scope = CoroutineScope (Dispatchers.Default)
     fun addHeaderAndSubmitList(list :List<SleepNight>?){
-
-
+          scope.launch {
             val items =  when (list){
                 null -> listOf(DemoItem.Header)
                 else -> listOf(DemoItem.Header) + list.map { DemoItem.SleepNightItem(it) }
             }
+              withContext(Dispatchers.Main) {
+                  submitList(items)
+              }
+    }
 
-        submitList(items)
+
 
 
     }
