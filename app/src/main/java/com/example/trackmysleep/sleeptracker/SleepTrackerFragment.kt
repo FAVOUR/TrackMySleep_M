@@ -16,6 +16,7 @@ import com.example.trackmysleep.R
 import com.example.trackmysleep.database.SleepDatabase
 import com.example.trackmysleep.databinding.SleepTrackerFragmentBinding
 import com.example.trackmysleep.sleeptracker.adapter.SleepNightAdapter
+import com.example.trackmysleep.sleeptracker.adapter.SleepNightListener
 import com.google.android.material.snackbar.Snackbar
 
 class SleepTrackerFragment : Fragment() {
@@ -54,7 +55,7 @@ class SleepTrackerFragment : Fragment() {
             }
         })
 
-        val adapter = SleepNightAdapter(SleepNightAdapter.SleepNightListener { night ->
+        val adapter = SleepNightAdapter(SleepNightListener { night ->
             sleepTrackerViewModel.onNightSleepClicked(night)
             Toast.makeText(requireContext(),"I have been clicked I am sleep no 2 ",Toast.LENGTH_SHORT).show()
         })
@@ -69,7 +70,7 @@ class SleepTrackerFragment : Fragment() {
 
         sleepTrackerViewModel.nights.observe(this, Observer{
              it?.let {
-                 adapter.submitList(it)
+                 adapter.addHeaderAndSubmitList(it)
 
              }
         })

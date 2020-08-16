@@ -24,6 +24,19 @@ class SleepNightAdapter(val sleepNightListener: SleepNightListener) : ListAdapte
         }
     }
 
+    fun addHeaderAndSubmitList(list :List<SleepNight>?){
+
+
+            val items =  when (list){
+                null -> listOf(DemoItem.Header)
+                else -> listOf(DemoItem.Header) + list.map { DemoItem.SleepNightItem(it) }
+            }
+
+        submitList(items)
+
+
+    }
+
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)){
