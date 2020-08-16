@@ -60,4 +60,16 @@ class SleepNightAdapter(val sleepNightListener: SleepNightListener) : ListAdapte
         fun onClick(sleepNight: SleepNight) = clickListener(sleepNight.nightId)
     }
 
+
+      sealed class  DemoItem(){
+          abstract val id:Long
+          class Header():DemoItem(){
+              override val id = Long.MIN_VALUE
+          }
+
+          class sleepNightItem(val sleepNight: SleepNight):DemoItem(){
+            override val id:Long =sleepNight.nightId
+          }
+      }
+
 }
