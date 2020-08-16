@@ -10,7 +10,7 @@
 
             <variable
                 name="sleepListener"
-                type="com.example.trackmysleep.sleeptracker.adapter.SleepNightAdapter.SleepNightListener" />
+                type="com.example.trackmysleep.sleeptracker.adapter.SleepNightListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
